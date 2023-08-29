@@ -4,6 +4,8 @@ const path = require("path");
 const { open } = require("sqlite");
 const sqlite3 = require("sqlite3");
 const app = express();
+const jwt = require("jsonwebtoken")
+const bcrypt = require("bcrypt")
 app.use(express.json());
 
 const dbPath = path.join(__dirname, "mydb.db");
@@ -81,6 +83,7 @@ app.post("/register", async (request, response) => {
     }
   }
 });
+
 //login
 app.post("/login/", async (request, response) => {
   const { name, password } = request.body;
