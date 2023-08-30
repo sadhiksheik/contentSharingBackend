@@ -159,9 +159,7 @@ app.put("/posts/:post_id/",authenticateToken, async (request, response) => {
     UPDATE 
         posts
      SET
-        post_id = '${post_id}',
         post_text = '${post_text}',
-        user_id = '${user_id}'
     WHERE
         post_id = ${post_id};`;
   await db.run(updatePostQuery);
