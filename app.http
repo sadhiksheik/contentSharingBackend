@@ -1,21 +1,33 @@
-GET 
-https://content-sharing-backed.onrender.com/posts
-
-###
-
 POST http://localhost:3000/register
 Content-Type: application/json
 
-}
-  "name": "Sadhik Sheik",
-  "password": "sadhik@123"
+{
+  "name": "Sathish Pydi",
+  "password": "sathis@123"
 }
 
 ### 
 POST http://localhost:3000/login
 Content-Type: application/json
 
+{
+  "name": "Sathish Pydi",
+  "password": "sathis@123"
 }
-  "name": "Sadhik Sheik",
-  "password": "sadhik@123"
+
+###
+GET http://localhost:3000/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU2F0aGlzaCBQeWRpIiwiaWF0IjoxNjkzMzkyNjkwfQ.lCCcR-jkvEpSUUYz5cBebYKVzbL_xQT1Es3eIoh1clU
+###
+
+GET http://localhost:3000/posts/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU2F0aGlzaCBQeWRpIiwiaWF0IjoxNjkzMzkyNjkwfQ.lCCcR-jkvEpSUUYz5cBebYKVzbL_xQT1Es3eIoh1clU
+
+###
+PUT  http://localhost:3000/posts/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU2F0aGlzaCBQeWRpIiwiaWF0IjoxNjkzMzkyNjkwfQ.lCCcR-jkvEpSUUYz5cBebYKVzbL_xQT1Es3eIoh1clU
+
+{
+  "post_text":"hii im new to this platform ===="
 }

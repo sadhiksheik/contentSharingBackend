@@ -43,6 +43,7 @@ const authenticateToken = (request, response, next) => {
         response.status(401);
         response.send("Invalid JWT Token");
       } else {
+        request.user_id = payload.user_id
         next();
       }
     });
@@ -153,7 +154,10 @@ app.post("/posts",authenticateToken, async (request, response) => {
 app.put("/posts/:post_id/",authenticateToken, async (request, response) => {
   const { post_id } = request.params;
   const {postDetails} = request.body;
-  const { post_text,user_id } = postDetails;
+
+  console.log(postDetails)
+
+  const { post_text} = postDetails;
 
   const updatePostQuery = ` 
     UPDATE 
