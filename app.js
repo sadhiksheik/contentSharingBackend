@@ -138,37 +138,42 @@ app.get("/posts/:user_id/",authenticateToken, async (request, response) => {
   const userPosts = await db.all(getUserPosts);
   response.send(userPosts);
 });
+
 //create post 
-app.post("/posts",authenticateToken, async (request, response) => {
+app.post("/posts", authenticateToken, async (request, response) => {
   const postDetails = request.body;
-  const { post_text,user_id } = postDetails;
-  const createPostQuery = ` 
+  const { post_text, likes, user_id } = postDetails;
+  console.log(post_text);
+  
+  const createPostQuery = `
     INSERT INTO
-        posts (post_text,user_id)
-     VALUES
-        (${post_text}, '${user_id}');`;
-  await db.run(createPostQuery);
+      posts (post_text, likes, user_id)
+    VALUES
+      (?, ?, ?);`;
+
+  // Use parameters to safely insert data
+  await db.run(createPostQuery, [post_text, likes, user_id]);
+  
   response.send("Post Successfully Added");
 });
+
 //update post (edit)
 app.put("/posts/:post_id/",authenticateToken, async (request, response) => {
   const { post_id } = request.params;
-  const {postDetails} = request.body;
-
-  console.log(postDetails)
-
+  const postDetails = request.body;
   const { post_text} = postDetails;
 
   const updatePostQuery = ` 
     UPDATE 
         posts
      SET
-        post_text = '${post_text}',
+        post_text = '${post_text}'
     WHERE
         post_id = ${post_id};`;
   await db.run(updatePostQuery);
   response.send(`Post Updated`);
 });
+
 //delete post 
 app.delete("/posts/:post_id/",authenticateToken, async (request, response) => {
   const { post_id } = request.params;
@@ -176,7 +181,7 @@ app.delete("/posts/:post_id/",authenticateToken, async (request, response) => {
     DELETE FROM 
         posts 
      WHERE 
-        id = ${post_id};`;
+        post_id = ${post_id};`;
   await db.run(deleteQuery);
   response.send("Post Deleted");
 });

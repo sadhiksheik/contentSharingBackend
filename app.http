@@ -26,8 +26,23 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU2F0aGlza
 ###
 PUT  http://localhost:3000/posts/1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU2F0aGlzaCBQeWRpIiwiaWF0IjoxNjkzMzkyNjkwfQ.lCCcR-jkvEpSUUYz5cBebYKVzbL_xQT1Es3eIoh1clU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU2F0aGlzaCBQeWRpIiwiaWF0IjoxNjkzNDE0MzI1fQ.HQeSICVwY83rb-uFMufvu9C3F0OMYhUZve55JCVgzCU
 
 {
   "post_text":"hii im new to this platform ===="
 }
+###
+POST http://localhost:3000/posts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU2F0aGlzaCBQeWRpIiwiaWF0IjoxNjkzNDE0MzI1fQ.HQeSICVwY83rb-uFMufvu9C3F0OMYhUZve55JCVgzCU
+
+{
+  "post_text": "Hii im sathish im an electrical engineer",
+  "likes":12,
+  "user_id":2
+}
+
+###
+DELETE http://localhost:3000/posts/12
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU2F0aGlzaCBQeWRpIiwiaWF0IjoxNjkzNDE0MzI1fQ.HQeSICVwY83rb-uFMufvu9C3F0OMYhUZve55JCVgzCU
+
