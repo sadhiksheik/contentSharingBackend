@@ -191,6 +191,22 @@ app.put("/posts/:post_id/", authenticateToken, async (request, response) => {
   await db.run(updatePostQuery);
   response.send(`Post Updated`);
 });
+//like post 
+app.put("/like/:post_id/", authenticateToken, async (request, response) => {
+  const { post_id } = request.params;
+  const postDetails = request.body;
+  const { likes } = postDetails;
+
+  const updatePostQuery = ` 
+    UPDATE 
+        posts
+     SET
+        likes = '${likes}'
+    WHERE
+        post_id = ${post_id};`;
+  await db.run(updatePostQuery);
+  response.send(`Likes Updated`);
+});
 
 //delete post
 app.delete("/posts/:post_id/", authenticateToken, async (request, response) => {
