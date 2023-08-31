@@ -1,4 +1,4 @@
-POST http://localhost:3003/register
+POST https://content-sharing-backed.onrender.com/register
 Content-Type: application/json
 
 {
@@ -39,7 +39,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU2F0aGlza
 {
   "post_text": "Hii im leo im a mechanical engineer",
   "likes":12,
-  "user_id":3
+  "user_id":3,
+  "user_name": "Sadhik Sheik"
 }
 
 ###

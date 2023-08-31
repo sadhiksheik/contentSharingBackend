@@ -166,17 +166,17 @@ app.get("/posts/:user_id/",authenticateToken, async (request, response) => {
 //create post 
 app.post("/posts", authenticateToken, async (request, response) => {
   const postDetails = request.body;
-  const { post_text, likes, user_id } = postDetails;
+  const { post_text, likes, user_id, user_name } = postDetails;
   console.log(post_text);
   
   const createPostQuery = `
     INSERT INTO
-      posts (post_text, likes, user_id)
+      posts (post_text, likes, user_id, user_name)
     VALUES
       (?, ?, ?);`;
 
   // Use parameters to safely insert data
-  await db.run(createPostQuery, [post_text, likes, user_id]);
+  await db.run(createPostQuery, [post_text, likes, user_id,user_name]);
   
   response.send("Post Successfully Added");
 });
