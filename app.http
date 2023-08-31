@@ -2,8 +2,8 @@ POST http://localhost:3000/register
 Content-Type: application/json
 
 {
-  "name": "Sathish Pydi",
-  "password": "sathis@123"
+  "name": "Leo Motto",
+  "password": "leo@123"
 }
 
 ### 
@@ -11,25 +11,25 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-  "name": "Sathish Pydi",
-  "password": "sathis@123"
+  "name": "Leo Motto",
+  "password": "leo@123"
 }
 
 ###
 GET http://localhost:3000/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU2F0aGlzaCBQeWRpIiwiaWF0IjoxNjkzMzkyNjkwfQ.lCCcR-jkvEpSUUYz5cBebYKVzbL_xQT1Es3eIoh1clU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTGVvIE1vdHRvIiwiaWF0IjoxNjkzNDE2MTA1fQ.nU4lnw30PGfeCTLH8sURzkHzdl1mqUEcrvz1yF4ET3Y
 ###
 
 GET http://localhost:3000/posts/2
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU2F0aGlzaCBQeWRpIiwiaWF0IjoxNjkzMzkyNjkwfQ.lCCcR-jkvEpSUUYz5cBebYKVzbL_xQT1Es3eIoh1clU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTGVvIE1vdHRvIiwiaWF0IjoxNjkzNDE2MTA1fQ.nU4lnw30PGfeCTLH8sURzkHzdl1mqUEcrvz1yF4ET3Y
 
 ###
 PUT  http://localhost:3000/posts/1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU2F0aGlzaCBQeWRpIiwiaWF0IjoxNjkzNDE0MzI1fQ.HQeSICVwY83rb-uFMufvu9C3F0OMYhUZve55JCVgzCU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTGVvIE1vdHRvIiwiaWF0IjoxNjkzNDE2MTA1fQ.nU4lnw30PGfeCTLH8sURzkHzdl1mqUEcrvz1yF4ET3Y
 
 {
-  "post_text":"hii im new to this platform ===="
+  "post_text":"hii im leo and im new to this platform "
 }
 ###
 POST http://localhost:3000/posts
@@ -37,9 +37,9 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU2F0aGlzaCBQeWRpIiwiaWF0IjoxNjkzNDE0MzI1fQ.HQeSICVwY83rb-uFMufvu9C3F0OMYhUZve55JCVgzCU
 
 {
-  "post_text": "Hii im sathish im an electrical engineer",
+  "post_text": "Hii im leo im a mechanical engineer",
   "likes":12,
-  "user_id":2
+  "user_id":3
 }
 
 ###
