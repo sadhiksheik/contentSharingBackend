@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const cors = require("cors");
 
-const bp = require("body-parser");
+// const bp = require("body-parser");
 const { open } = require("sqlite");
 const sqlite3 = require("sqlite3");
 const app = express();
@@ -14,15 +14,10 @@ app.use(express.json());
 const dbPath = path.join(__dirname, "mydb.db");
 let db = null;
 
-app.use(
-  cors({
-    origin: "*",
-    methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
-  })
-);
+app.use(cors());
 
-app.use(bp.json());
-app.use(bp.urlencoded({ extended: true }));
+// app.use(bp.json());
+// app.use(bp.urlencoded({ extended: true }));
 
 const initializeDBAndServer = async () => {
   try {
@@ -96,7 +91,7 @@ app.post("/register", async (request, response) => {
             )`;
       const dbResponse = await db.run(createUserQuery);
       const bookId = dbResponse.lastID;
-      response.send({ bookId: bookId })
+      response.send({ bookId: bookId });
       response.status(200);
       // response.send("User created successfully");
     }
@@ -160,7 +155,7 @@ app.get("/myposts/", authenticateToken, async (request, response) => {
 //create post
 app.post("/posts", authenticateToken, async (request, response) => {
   const postDetails = request.body;
-  const {user_id} = request
+  const { user_id } = request;
   const { post_text, likes, user_name } = postDetails;
   console.log(post_text);
 
