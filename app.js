@@ -109,6 +109,7 @@ app.post("/login/", async (request, response) => {
     if (passwordMatched === true) {
       const playload = {
         name: name,
+        user_id: dbUser.user_id,
       };
       const jwtToken = jwt.sign(playload, "MY_SECRET_TOKEN");
       response.send({ jwtToken });
