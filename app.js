@@ -18,15 +18,9 @@ let db = null;
 app.use(
   cors({
     origin: "*",
-  })
-);
-
-app.use(
-  cors({
     methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
   })
 );
-
 
 app.use(bp.json());
 app.use(bp.urlencoded({ extended: true }));
