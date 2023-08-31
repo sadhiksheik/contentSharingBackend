@@ -1,30 +1,30 @@
-POST https://content-sharing-backed.onrender.com/register
+POST http://localhost:3003/register
 Content-Type: application/json
 
 {
-  "name": "Sadhik Sheik",
-  "password": "sadhik@123"
+  "name": "Nithin Ram",
+  "password": "ram@123"
 }
 
 ### 
-POST https://content-sharing-backed.onrender.com/login
+POST http://localhost:3003/login
 Content-Type: application/json
 
 {
-  "name": "Leo Motto",
-  "password": "leo@123"
+  "name": "Nithin Ram",
+  "password": "ram@123"
 }
 
 ###
-GET https://content-sharing-backed.onrender.com/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTGVvIE1vdHRvIiwiaWF0IjoxNjkzNDE2MTA1fQ.nU4lnw30PGfeCTLH8sURzkHzdl1mqUEcrvz1yF4ET3Y
+GET http://localhost:3003/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo2LCJpYXQiOjE2OTM1MDMwMTV9.ZGjLyGPldjig2EsSzhKnnvwcJDqPSC45Jxy63CDZzLk
 ###
 
-GET https://content-sharing-backed.onrender.com/posts/3
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTGVvIE1vdHRvIiwiaWF0IjoxNjkzNDE2MTA1fQ.nU4lnw30PGfeCTLH8sURzkHzdl1mqUEcrvz1yF4ET3Y
+GET http://localhost:3003/myposts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo2LCJpYXQiOjE2OTM1MDMwMTV9.ZGjLyGPldjig2EsSzhKnnvwcJDqPSC45Jxy63CDZzLk
 
 ###
-PUT  https://content-sharing-backed.onrender.com/posts/1
+PUT  http://localhost:3003/posts/1
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTGVvIE1vdHRvIiwiaWF0IjoxNjkzNDE2MTA1fQ.nU4lnw30PGfeCTLH8sURzkHzdl1mqUEcrvz1yF4ET3Y
 
@@ -32,18 +32,17 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTGVvIE1vd
   "post_text":"hii im leo and im new to this platform "
 }
 ###
-POST https://content-sharing-backed.onrender.com/posts
+POST http://localhost:3003/posts
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU2F0aGlzaCBQeWRpIiwiaWF0IjoxNjkzNDE0MzI1fQ.HQeSICVwY83rb-uFMufvu9C3F0OMYhUZve55JCVgzCU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo2LCJpYXQiOjE2OTM1MDMwMTV9.ZGjLyGPldjig2EsSzhKnnvwcJDqPSC45Jxy63CDZzLk
 
 {
-  "post_text": "Hii im Virat im an indian cricket player",
+  "post_text": "Hii im ram an indian actor",
   "likes":12,
-  "user_id":3,
-  "user_name": "Sadhik Sheik"
+  "user_name": "Nithin Ram"
 }
 
 ###
-DELETE https://content-sharing-backed.onrender.com/posts/12
+DELETE http://localhost:3003/posts/12
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU2F0aGlzaCBQeWRpIiwiaWF0IjoxNjkzNDE0MzI1fQ.HQeSICVwY83rb-uFMufvu9C3F0OMYhUZve55JCVgzCU
 

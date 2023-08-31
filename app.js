@@ -1,19 +1,18 @@
 const express = require("express");
 const path = require("path");
-const cors = require("cors")
+const cors = require("cors");
 
 const bp = require("body-parser");
 const { open } = require("sqlite");
 const sqlite3 = require("sqlite3");
 const app = express();
 
-const jwt = require("jsonwebtoken")
-const bcrypt = require("bcrypt")
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 app.use(express.json());
 
 const dbPath = path.join(__dirname, "mydb.db");
 let db = null;
-
 
 app.use(
   cors({
@@ -57,7 +56,7 @@ const authenticateToken = (request, response, next) => {
         response.status(401);
         response.send("Invalid JWT Token");
       } else {
-        request.user_id = payload.user_id
+        request.user_id = payload.user_id;
         next();
       }
     });
@@ -65,9 +64,9 @@ const authenticateToken = (request, response, next) => {
 };
 //register
 app.post("/register", async (request, response) => {
-  const { name,password} = request.body;
+  const { name, password } = request.body;
 
-console.log(name, password)
+  console.log(name, password);
 
   const getUserQuery = `
     SELECT
@@ -95,9 +94,11 @@ console.log(name, password)
             '${name}',
             '${hashedPassword}'
             )`;
-      await db.run(createUserQuery);
+      const dbResponse = await db.run(createUserQuery);
+      const bookId = dbResponse.lastID;
+      response.send({ bookId: bookId })
       response.status(200);
-      response.send("User created successfully");
+      // response.send("User created successfully");
     }
   }
 });
@@ -118,13 +119,9 @@ app.post("/login/", async (request, response) => {
     response.status(400);
     response.send("Invalid user");
   } else {
-    const passwordMatched = await bcrypt.compare(
-      password,
-      dbUser.password
-    );
+    const passwordMatched = await bcrypt.compare(password, dbUser.password);
     if (passwordMatched === true) {
       const playload = {
-        name: name,
         user_id: dbUser.user_id,
       };
       const jwtToken = jwt.sign(playload, "MY_SECRET_TOKEN");
@@ -135,17 +132,20 @@ app.post("/login/", async (request, response) => {
     }
   }
 });
+
 //get all posts
-app.get("/posts",authenticateToken, async (request, response) =>{
+app.get("/posts", authenticateToken, async (request, response) => {
   const getPostsQuery = `
   SELECT * FROM posts
-  `
+  `;
   const allposts = await db.all(getPostsQuery);
-   response.send(allposts);
-})
+  response.send(allposts);
+});
+
 //get user posts
-app.get("/posts/:user_id/",authenticateToken, async (request, response) => {
-  const { user_id } = request.params;
+app.get("/myposts/", authenticateToken, async (request, response) => {
+  const { user_id } = request;
+  // console.log(request)
   const getUserPosts = ` 
         SELECT
             *
@@ -157,29 +157,34 @@ app.get("/posts/:user_id/",authenticateToken, async (request, response) => {
   response.send(userPosts);
 });
 
-//create post 
+//create post
 app.post("/posts", authenticateToken, async (request, response) => {
   const postDetails = request.body;
-  const { post_text, likes, user_id, user_name } = postDetails;
+  const {user_id} = request
+  const { post_text, likes, user_name } = postDetails;
   console.log(post_text);
-  
+
   const createPostQuery = `
     INSERT INTO
       posts (post_text, likes, user_id, user_name)
     VALUES
-      (?, ?, ?,?);`;
+      (
+        '${post_text}',
+        ${likes},
+        ${user_id},
+        '${user_name}'
+      );`;
 
-  // Use parameters to safely insert data
-  await db.run(createPostQuery, [post_text, likes, user_id,user_name]);
-  
+  await db.run(createPostQuery);
+
   response.send("Post Successfully Added");
 });
 
 //update post (edit)
-app.put("/posts/:post_id/",authenticateToken, async (request, response) => {
+app.put("/posts/:post_id/", authenticateToken, async (request, response) => {
   const { post_id } = request.params;
   const postDetails = request.body;
-  const { post_text} = postDetails;
+  const { post_text } = postDetails;
 
   const updatePostQuery = ` 
     UPDATE 
@@ -192,8 +197,8 @@ app.put("/posts/:post_id/",authenticateToken, async (request, response) => {
   response.send(`Post Updated`);
 });
 
-//delete post 
-app.delete("/posts/:post_id/",authenticateToken, async (request, response) => {
+//delete post
+app.delete("/posts/:post_id/", authenticateToken, async (request, response) => {
   const { post_id } = request.params;
   const deleteQuery = `
     DELETE FROM 
