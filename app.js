@@ -1,10 +1,12 @@
 const express = require("express");
 const path = require("path");
 const cors = require("cors")
+
+const bp = require("body-parser");
 const { open } = require("sqlite");
 const sqlite3 = require("sqlite3");
 const app = express();
-app.use(cors())
+
 const jwt = require("jsonwebtoken")
 const bcrypt = require("bcrypt")
 app.use(express.json());
@@ -12,14 +14,31 @@ app.use(express.json());
 const dbPath = path.join(__dirname, "mydb.db");
 let db = null;
 
+
+app.use(
+  cors({
+    origin: "*",
+  })
+);
+
+app.use(
+  cors({
+    methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
+  })
+);
+
+
+app.use(bp.json());
+app.use(bp.urlencoded({ extended: true }));
+
 const initializeDBAndServer = async () => {
   try {
     db = await open({
       filename: dbPath,
       driver: sqlite3.Database,
     });
-    app.listen(3000, () => {
-      console.log("Server Running at http://localhost:3000/");
+    app.listen(3003, () => {
+      console.log("Server Running at http://localhost:3003/");
     });
   } catch (e) {
     console.log(`DB Error: ${e.message}`);
@@ -53,6 +72,9 @@ const authenticateToken = (request, response, next) => {
 //register
 app.post("/register", async (request, response) => {
   const { name,password} = request.body;
+
+console.log(name, password)
+
   const getUserQuery = `
     SELECT
         *

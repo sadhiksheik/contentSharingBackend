@@ -1,13 +1,13 @@
-POST http://localhost:3000/register
+POST http://localhost:3003/register
 Content-Type: application/json
 
 {
-  "name": "Leo Motto",
-  "password": "leo@123"
+  "name": "Sadhik Sheik",
+  "password": "sadhik@123"
 }
 
 ### 
-POST http://localhost:3000/login
+POST http://localhost:3003/login
 Content-Type: application/json
 
 {
@@ -16,15 +16,15 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3000/posts
+GET http://localhost:3003/posts
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTGVvIE1vdHRvIiwiaWF0IjoxNjkzNDE2MTA1fQ.nU4lnw30PGfeCTLH8sURzkHzdl1mqUEcrvz1yF4ET3Y
 ###
 
-GET http://localhost:3000/posts/2
+GET http://localhost:3003/posts/2
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTGVvIE1vdHRvIiwiaWF0IjoxNjkzNDE2MTA1fQ.nU4lnw30PGfeCTLH8sURzkHzdl1mqUEcrvz1yF4ET3Y
 
 ###
-PUT  http://localhost:3000/posts/1
+PUT  http://localhost:3003/posts/1
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTGVvIE1vdHRvIiwiaWF0IjoxNjkzNDE2MTA1fQ.nU4lnw30PGfeCTLH8sURzkHzdl1mqUEcrvz1yF4ET3Y
 
@@ -32,7 +32,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTGVvIE1vd
   "post_text":"hii im leo and im new to this platform "
 }
 ###
-POST http://localhost:3000/posts
+POST http://localhost:3003/posts
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU2F0aGlzaCBQeWRpIiwiaWF0IjoxNjkzNDE0MzI1fQ.HQeSICVwY83rb-uFMufvu9C3F0OMYhUZve55JCVgzCU
 
@@ -43,6 +43,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU2F0aGlza
 }
 
 ###
-DELETE http://localhost:3000/posts/12
+DELETE http://localhost:3003/posts/12
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU2F0aGlzaCBQeWRpIiwiaWF0IjoxNjkzNDE0MzI1fQ.HQeSICVwY83rb-uFMufvu9C3F0OMYhUZve55JCVgzCU
 
