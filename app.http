@@ -20,7 +20,7 @@ GET http://localhost:3003/posts
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTGVvIE1vdHRvIiwiaWF0IjoxNjkzNDE2MTA1fQ.nU4lnw30PGfeCTLH8sURzkHzdl1mqUEcrvz1yF4ET3Y
 ###
 
-GET http://localhost:3003/posts/2
+GET http://localhost:3003/posts/3
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTGVvIE1vdHRvIiwiaWF0IjoxNjkzNDE2MTA1fQ.nU4lnw30PGfeCTLH8sURzkHzdl1mqUEcrvz1yF4ET3Y
 
 ###
@@ -37,7 +37,7 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU2F0aGlzaCBQeWRpIiwiaWF0IjoxNjkzNDE0MzI1fQ.HQeSICVwY83rb-uFMufvu9C3F0OMYhUZve55JCVgzCU
 
 {
-  "post_text": "Hii im leo im a mechanical engineer",
+  "post_text": "Hii im Virat im an indian cricket player",
   "likes":12,
   "user_id":3,
   "user_name": "Sadhik Sheik"

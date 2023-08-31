@@ -173,7 +173,7 @@ app.post("/posts", authenticateToken, async (request, response) => {
     INSERT INTO
       posts (post_text, likes, user_id, user_name)
     VALUES
-      (?, ?, ?);`;
+      (?, ?, ?,?);`;
 
   // Use parameters to safely insert data
   await db.run(createPostQuery, [post_text, likes, user_id,user_name]);
