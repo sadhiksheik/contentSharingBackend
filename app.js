@@ -90,8 +90,8 @@ app.post("/register", async (request, response) => {
             '${hashedPassword}'
             )`;
       const dbResponse = await db.run(createUserQuery);
-      const bookId = dbResponse.lastID;
-      response.send({ bookId: bookId });
+      const userId = dbResponse.lastID;
+      response.send({ user_id: userId });
       response.status(200);
       // response.send("User created successfully");
     }
