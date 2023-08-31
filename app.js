@@ -201,7 +201,7 @@ app.put("/like/:post_id/", authenticateToken, async (request, response) => {
     UPDATE 
         posts
      SET
-        likes = '${likes}'
+        likes = ${likes}
     WHERE
         post_id = ${post_id};`;
   await db.run(updatePostQuery);
